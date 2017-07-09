@@ -7,38 +7,39 @@
     <section id="app">
       <header>
         <h1>RRSP vs. TFSA Calculatron</h2>
+        This tool will help you to determine the rates of return on TFSA and RRSP investments after considering tax rates and inflation.
       </header>
       <form action="#">
         <fieldset>
-          <div>
+          <article>
             <label for="deposit-amount">Amount of Deposit ($):</label>
             <input id="deposit-amount" type="number" step="any" min="0.01" required="required" v-model.number="depositAmount" />
-          </div>
+          </article>
 
-          <div>
+          <article>
             <label for="years-invested">Years Invested:</label>
             <input id="years-invested" type="number" step="1" min="1" required="required" v-model.number="yearsInvested" />
-          </div>
+          </article>
 
-          <div>
+          <article>
             <label for="roi">Return on Investment (%):</label>
             <input id="roi" type="number" step="any" min="0.1" required="required" v-model.number="roi" />
-          </div>
+          </article>
 
-          <div>
+          <article>
             <label for="inflation">Inflation Rate (%):</label>
             <input id="inflation" type="number" step="any" min="0.1" required="required" v-model.number="inflation" />
-          </div>
+          </article>
 
-          <div>
+          <article>
             <label for="current-tax-rate">Current Marginal Tax Rate (%):</label>
             <input id="current-tax-rate" type="number" step="any" min="0.1" required="required" v-model.number="currentTaxRate" />
-          </div>
+          </article>
 
-          <div>
+          <article>
             <label for="retirement-tax-rate">Average Tax Rate in Retirement (%):</label>
             <input id="retirement-tax-rate" type="number" step="any" min="0.1" required="required" v-model.number="retirementTaxRate" />
-          </div>
+          </article>
         </fieldset>
 
         <button type="submit" v-on:click="calculate">Calculate</button>
@@ -46,12 +47,30 @@
 
       <article v-if="displayResults">
         <h3>Your results:</h3>
-        <div>
-          <output>Future value in today's dollars: {{naiveResult}}</output>
-        </div>
-        <div>
-          <output>Future value with inflation: {{inflationResult}}</output>
-        </div>
+        <article>
+          <output>Future value: ${{nominalFutureValue.toFixed(2)}}</output>
+        </article>
+        <article>
+          <output>Future value adjusted for inflation: ${{inflationFutureValue.toFixed(2)}}</output>
+        </article>
+        <article>
+          <h4>RRSP</h4>
+          <ul>
+            <li>Tax refund: ${{rrspTaxRefund.toFixed(2)}}</li>
+            <li>Tax due on withdrawal: ${{rrspWithdrawalTaxValue.toFixed(2)}}</li>
+            <li>Future value after tax on withdrawal: ${{rrspFutureValueAfterTax.toFixed(2)}}</li>
+            <li>Future value after tax on withdrawal (when investment tax refund is also invested): ${{rrspWithTaxRefundFutureValueAfterTax.toFixed(2)}}</li>
+          </ul>
+        </article>
+        <article>
+          <h4>TFSA</h4>
+          <ul>
+            <li>Tax refund: ${{tfsaTaxRefund.toFixed(2)}}</li>
+            <li>Tax due on withdrawal: ${{tfsaWithdrawalTaxValue.toFixed(2)}}</li>
+            <li>Future value after tax on withdrawal: ${{tfsaFutureValueAfterTax.toFixed(2)}}</li>
+            <li>Future value after tax on withdrawal (when investment tax refund is also invested): ${{tfsaWithTaxRefundFutureValueAfterTax.toFixed(2)}}</li>
+          </ul>
+        </article>
       </article>
     </section>
   </body>
