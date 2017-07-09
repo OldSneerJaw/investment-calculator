@@ -1,0 +1,60 @@
+<html>
+  <head>
+    <title>Investment Calculator</title>
+    <script src="https://unpkg.com/vue"></script>
+  </head>
+  <body>
+    <section id="app">
+      <header>
+        <h1>RRSP vs. TFSA Calculatron</h2>
+      </header>
+      <form action="#">
+        <fieldset>
+          <div>
+            <label for="deposit-amount">Amount of Deposit ($):</label>
+            <input id="deposit-amount" type="number" step="any" min="0.01" required="required" v-model.number="depositAmount" />
+          </div>
+
+          <div>
+            <label for="years-invested">Years Invested:</label>
+            <input id="years-invested" type="number" step="1" min="1" required="required" v-model.number="yearsInvested" />
+          </div>
+
+          <div>
+            <label for="roi">Return on Investment (%):</label>
+            <input id="roi" type="number" step="any" min="0.1" required="required" v-model.number="roi" />
+          </div>
+
+          <div>
+            <label for="inflation">Inflation Rate (%):</label>
+            <input id="inflation" type="number" step="any" min="0.1" required="required" v-model.number="inflation" />
+          </div>
+
+          <div>
+            <label for="current-tax-rate">Current Marginal Tax Rate (%):</label>
+            <input id="current-tax-rate" type="number" step="any" min="0.1" required="required" v-model.number="currentTaxRate" />
+          </div>
+
+          <div>
+            <label for="retirement-tax-rate">Average Tax Rate in Retirement (%):</label>
+            <input id="retirement-tax-rate" type="number" step="any" min="0.1" required="required" v-model.number="retirementTaxRate" />
+          </div>
+        </fieldset>
+
+        <button type="submit" v-on:click="calculate">Calculate</button>
+      </form>
+
+      <article v-if="displayResults">
+        <h3>Your results:</h3>
+        <div>
+          <output>Future value in today's dollars: {{naiveResult}}</output>
+        </div>
+        <div>
+          <output>Future value with inflation: {{inflationResult}}</output>
+        </div>
+      </article>
+    </section>
+  </body>
+
+  <script src="src/app.js"></script>
+</html>
