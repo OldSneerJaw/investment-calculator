@@ -1,5 +1,5 @@
 new Vue({
-  el: '#app',
+  el: '#calculator',
   data: {
     currentTaxRate: null,
     retirementTaxRate: null,
