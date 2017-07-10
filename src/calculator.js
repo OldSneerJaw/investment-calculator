@@ -1,4 +1,4 @@
-new Vue({
+let options = {
   el: '#calculator',
   data: {
     currentTaxRate: null,
@@ -121,9 +121,18 @@ new Vue({
       return this.currentTaxRate >= 0.1 &&
         this.retirementTaxRate >= 0.1 &&
         this.depositAmount >= 0.01 &&
-        this.yearsInvested >= 1 && Number.isInteger(this.yearsInvested)
+        this.yearsInvested >= 1 && Number.isInteger(this.yearsInvested) &&
         this.roi >= 0.1 &&
         this.inflation >= 0.1;
     }
   }
-});
+};
+
+if (typeof(Vue) === 'function') {
+  new Vue(options);
+}
+
+if (typeof(exports) !== 'undefined') {
+  // Export the options as an npm module so they can be exercised independently in unit tests
+  exports.options = options;
+}
