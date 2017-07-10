@@ -7,7 +7,7 @@
     <section id="calculator">
       <header>
         <h1>RRSP vs. TFSA Calculatron</h2>
-        This tool will help you to determine the rates of return on TFSA and RRSP investments after considering tax rates and inflation.
+        This tool will help you to determine the rates of return on TFSA and RRSP investments after considering tax rates and inflation. All input fields are <strong>required</strong>.
       </header>
       <form onsubmit="return false;">
         <fieldset>
@@ -33,12 +33,12 @@
 
           <article>
             <label for="current-tax-rate">Current Marginal Tax Rate (%):</label>
-            <input id="current-tax-rate" type="number" step="any" min="0.1" required="required" v-model.number="currentTaxRate" />
+            <input id="current-tax-rate" type="number" step="any" min="0.1" max="100" required="required" v-model.number="currentTaxRate" />
           </article>
 
           <article>
             <label for="retirement-tax-rate">Average Tax Rate in Retirement (%):</label>
-            <input id="retirement-tax-rate" type="number" step="any" min="0.1" required="required" v-model.number="retirementTaxRate" />
+            <input id="retirement-tax-rate" type="number" step="any" min="0.1" max="100" required="required" v-model.number="retirementTaxRate" />
           </article>
         </fieldset>
 

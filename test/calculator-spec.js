@@ -53,6 +53,32 @@ describe('Investment calculator', () => {
 
       expect(result).to.equal(false);
     });
+
+    it('should reject a current tax rate greater than 100%', () => {
+      calculator.currentTaxRate = 100.00001;
+      calculator.retirementTaxRate = 0.1;
+      calculator.depositAmount = 0.01;
+      calculator.yearsInvested = 1;
+      calculator.roi = 0.1;
+      calculator.inflation = 0.1;
+
+      let result = calculator.validateInputs();
+
+      expect(result).to.equal(false);
+    });
+
+    it('should reject a retirement tax rate greater than 100%', () => {
+      calculator.currentTaxRate = 0.1;
+      calculator.retirementTaxRate = 100.00001;
+      calculator.depositAmount = 0.01;
+      calculator.yearsInvested = 1;
+      calculator.roi = 0.1;
+      calculator.inflation = 0.1;
+
+      let result = calculator.validateInputs();
+
+      expect(result).to.equal(false);
+    });
   });
 
   it('should calculate future value correctly', () => {

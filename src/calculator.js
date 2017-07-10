@@ -115,8 +115,8 @@ let options = {
      * @returns {Boolean} Whether the inputs are valid
      */
     validateInputs: function() {
-      return this.currentTaxRate >= 0.1 &&
-        this.retirementTaxRate >= 0.1 &&
+      return this.currentTaxRate >= 0.1 && this.currentTaxRate <= 100 &&
+        this.retirementTaxRate >= 0.1 && this.retirementTaxRate <= 100 &&
         this.depositAmount >= 0.01 &&
         this.yearsInvested >= 1 && Number.isInteger(this.yearsInvested) &&
         this.roi >= 0.1 &&
