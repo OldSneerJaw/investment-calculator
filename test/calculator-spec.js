@@ -1,15 +1,15 @@
 const expect = require('chai').expect;
 const calculatorModule = require('../src/calculator.js');
 
-describe('Investment calculator', () => {
+describe('Investment calculator', function() {
   let calculator;
 
-  beforeEach(() => {
+  beforeEach(function() {
     calculator = new CalculatorFake();
   });
 
-  describe('input validation', () => {
-    it('should allow non-zero values', () => {
+  describe('input validation', function() {
+    it('should allow non-zero values', function() {
       calculator.currentTaxRate = 0.1;
       calculator.retirementTaxRate = 0.1;
       calculator.depositAmount = 0.01;
@@ -22,13 +22,13 @@ describe('Investment calculator', () => {
       expect(result).to.equal(true);
     });
 
-    it('should reject the default values', () => {
+    it('should reject the default values', function() {
       let result = calculator.validateInputs();
 
       expect(result).to.equal(false);
     });
 
-    it('should reject zero values', () => {
+    it('should reject zero values', function() {
       calculator.currentTaxRate = 0;
       calculator.retirementTaxRate = 0;
       calculator.depositAmount = 0;
@@ -41,7 +41,7 @@ describe('Investment calculator', () => {
       expect(result).to.equal(false);
     });
 
-    it('should reject a non-integer years value', () => {
+    it('should reject a non-integer years value', function() {
       calculator.currentTaxRate = 0.1;
       calculator.retirementTaxRate = 0.1;
       calculator.depositAmount = 0.01;
@@ -54,7 +54,7 @@ describe('Investment calculator', () => {
       expect(result).to.equal(false);
     });
 
-    it('should reject a current tax rate greater than 100%', () => {
+    it('should reject a current tax rate greater than 100%', function() {
       calculator.currentTaxRate = 100.00001;
       calculator.retirementTaxRate = 0.1;
       calculator.depositAmount = 0.01;
@@ -67,7 +67,7 @@ describe('Investment calculator', () => {
       expect(result).to.equal(false);
     });
 
-    it('should reject a retirement tax rate greater than 100%', () => {
+    it('should reject a retirement tax rate greater than 100%', function() {
       calculator.currentTaxRate = 0.1;
       calculator.retirementTaxRate = 100.00001;
       calculator.depositAmount = 0.01;
@@ -81,7 +81,7 @@ describe('Investment calculator', () => {
     });
   });
 
-  it('should calculate future value correctly', () => {
+  it('should calculate future value correctly', function() {
     let startingBalance = 1000;
     let interestRate = 1;
     let term = 12;
@@ -91,7 +91,7 @@ describe('Investment calculator', () => {
     expect(result.toFixed(2)).to.equal('1126.83');
   });
 
-  it('should calculate the real rate of return correctly', () => {
+  it('should calculate the real rate of return correctly', function() {
     let roi = 5;
     let inflationRate = 3;
 
@@ -100,7 +100,7 @@ describe('Investment calculator', () => {
     expect(result.toFixed(3)).to.equal('1.942');
   });
 
-  it('should calculate taxes correctly', () => {
+  it('should calculate taxes correctly', function() {
     let amount = 7000;
     let taxRate = 35;
 
@@ -109,8 +109,8 @@ describe('Investment calculator', () => {
     expect(result).to.equal(2450);
   });
 
-  describe('full calculations', () => {
-    it('should not show results when the inputs are invalid', () => {
+  describe('full calculations', function() {
+    it('should not show results when the inputs are invalid', function() {
       calculator.currentTaxRate = 0;
       calculator.retirementTaxRate = 0;
       calculator.depositAmount = 0;
@@ -133,7 +133,7 @@ describe('Investment calculator', () => {
       expect(calculator.tfsaWithTaxRefundFutureValueAfterTax).to.equal(0);
     });
 
-    it('produce the correct results when the inputs are valid', () => {
+    it('produce the correct results when the inputs are valid', function() {
       calculator.currentTaxRate = 30;
       calculator.retirementTaxRate = 20;
       calculator.depositAmount = 1500;
