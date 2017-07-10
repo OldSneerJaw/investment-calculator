@@ -55,14 +55,14 @@ describe('Investment calculator', () => {
     });
   });
 
-  it('should calculate compound interest correctly', () => {
+  it('should calculate future value correctly', () => {
     let startingBalance = 1000;
     let interestRate = 1;
     let term = 12;
 
-    let result = calculator.calculateCompoundInterest(startingBalance, interestRate, term);
+    let result = calculator.calculateFutureValue(startingBalance, interestRate, term);
 
-    expect(result.toFixed(2)).to.equal('126.83');
+    expect(result.toFixed(2)).to.equal('1126.83');
   });
 
   it('should calculate the real rate of return correctly', () => {

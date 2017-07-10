@@ -30,15 +30,12 @@ let options = {
         return;
       }
 
-      // The nominal interest is calculated in today's dollars (i.e. not adjusted for inflation):
-      // http://www.financeformulas.net/Compound_Interest.html
-      let nominalInterest = this.calculateCompoundInterest(this.depositAmount, this.roi, this.yearsInvested);
-      this.nominalFutureValue = this.depositAmount + nominalInterest;
+      // The future value is calculated in today's dollars (i.e. not adjusted for inflation)
+      this.nominalFutureValue = this.calculateFutureValue(this.depositAmount, this.roi, this.yearsInvested);
 
       // The real rate of rate/interest is calculated by adjusting for inflation
       let realRateOfReturn = this.calculateRealRateOfReturn(this.roi, this.inflation);
-      let realInterest = this.calculateCompoundInterest(this.depositAmount, realRateOfReturn, this.yearsInvested);
-      this.inflationFutureValue = this.depositAmount + realInterest;
+      this.inflationFutureValue = this.calculateFutureValue(this.depositAmount, realRateOfReturn, this.yearsInvested);
 
       // Calculate RRSP values with taxes taken into account:
       // - the investor will receive a tax refund for the current year for the value of the amount deposited at the current tax rate
@@ -62,16 +59,17 @@ let options = {
     },
 
     /**
-     * Calculates compound interest on a starting balance over a given number of years.
+     * Calculates the future value based on the specified starting balance, interest rate and the term of the investment:
+     * http://www.financeformulas.net/Compound_Interest.html
      *
      * @param {Number} startingBalance The starting balance
-     * @param {Number} interestRate The average interest rate as a percentage (i.e. between 0 and 100)
-     * @param {Number} years The number of years of the investment
+     * @param {Number} interestRate The average interest rate per period as a percentage (i.e. between 0 and 100)
+     * @param {Number} numPeriods The number of periods (e.g. months, years) of the investment
      *
      * @returns {Number} The amount of interest in dollars
      */
-    calculateCompoundInterest: function(startingBalance, interestRate, years) {
-      return startingBalance * (Math.pow(1 + (interestRate / 100), years) - 1);
+    calculateFutureValue: function(startingBalance, interestRate, numPeriods) {
+      return startingBalance * Math.pow(1 + (interestRate / 100), numPeriods);
     },
 
     /**
@@ -105,8 +103,7 @@ let options = {
      */
     calculateRrspWithTaxRefundFutureValueAfterTax: function() {
       let rrspWithTaxRefundDepositAmount = this.depositAmount + this.rrspTaxRefund;
-      let rrspWithTaxRefundNominalInterest = this.calculateCompoundInterest(rrspWithTaxRefundDepositAmount, this.roi, this.yearsInvested);
-      let rrspWithTaxRefundFutureValue = rrspWithTaxRefundDepositAmount + rrspWithTaxRefundNominalInterest;
+      let rrspWithTaxRefundFutureValue = this.calculateFutureValue(rrspWithTaxRefundDepositAmount, this.roi, this.yearsInvested);
       let rrspWithTaxRefundWithdrawalTaxValue = this.calculateTax(rrspWithTaxRefundFutureValue, this.retirementTaxRate);
 
       return rrspWithTaxRefundFutureValue - rrspWithTaxRefundWithdrawalTaxValue;
