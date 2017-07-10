@@ -2,7 +2,7 @@
   <head>
     <title>Investment Calculator</title>
     <script src="https://unpkg.com/vue"></script>
-    <link href="src/main.css" rel="stylesheet"></link
+    <link href="src/calculator.css" rel="stylesheet"></link
   </head>
   <body>
     <section id="calculator">
@@ -51,10 +51,10 @@
         <h3>Your results:</h3>
         <ul class="result-list">
           <li>
-            Future value: ${{nominalFutureValue.toFixed(2)}}
+            Future value: ${{ nominalFutureValue.toFixed(2) }}
           </li>
           <li>
-            Future value adjusted for inflation: ${{inflationFutureValue.toFixed(2)}}
+            Future value adjusted for inflation: ${{ inflationFutureValue.toFixed(2) }}
           </li>
         </ul>
         <table>
@@ -68,23 +68,23 @@
           <tbody>
             <tr>
               <td>Tax refund:</td>
-              <td>${{rrspTaxRefund.toFixed(2)}}</td>
-              <td>${{tfsaTaxRefund.toFixed(2)}}</td>
+              <td>${{ rrspTaxRefund.toFixed(2) }}</td>
+              <td>${{ tfsaTaxRefund.toFixed(2) }}</td>
             </tr>
             <tr>
               <td>Tax due on withdrawal:</td>
-              <td>${{rrspWithdrawalTaxValue.toFixed(2)}}</td>
-              <td>${{tfsaWithdrawalTaxValue.toFixed(2)}}</td>
+              <td>${{ rrspWithdrawalTaxValue.toFixed(2) }}</td>
+              <td>${{ tfsaWithdrawalTaxValue.toFixed(2) }}</td>
             </tr>
             <tr>
               <td>Future value after tax on withdrawal:</td>
-              <td>${{rrspFutureValueAfterTax.toFixed(2)}}</td>
-              <td>${{tfsaFutureValueAfterTax.toFixed(2)}}</td>
+              <td>${{ rrspFutureValueAfterTax.toFixed(2) }}</td>
+              <td>${{ tfsaFutureValueAfterTax.toFixed(2) }}</td>
             </tr>
             <tr>
               <td>Future value after tax on withdrawal when tax refund is also invested:</td>
-              <td>${{rrspWithTaxRefundFutureValueAfterTax.toFixed(2)}}</td>
-              <td>${{tfsaWithTaxRefundFutureValueAfterTax.toFixed(2)}}</td>
+              <td>${{ rrspWithTaxRefundFutureValueAfterTax.toFixed(2) }}</td>
+              <td>${{ tfsaWithTaxRefundFutureValueAfterTax.toFixed(2) }}</td>
             </tr>
           </tbody>
         </table>

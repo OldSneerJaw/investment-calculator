@@ -8,8 +8,8 @@
     "mocha": "^3.4.2"
   },
   "scripts": {
-    "jshint": "node_modules/.bin/jshint src; node_modules/.bin/jshint test",
-    "test": "node_modules/.bin/mocha"
+    "jshint": "node_modules/.bin/jshint src",
+    "test": "node_modules/.bin/mocha \"src/*-spec.js\""
   },
   "license": "MIT"
 }
