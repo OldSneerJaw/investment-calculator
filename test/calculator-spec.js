@@ -5,7 +5,7 @@ describe('Investment calculator', () => {
   let calculator;
 
   beforeEach(() => {
-    calculator = new Calculator();
+    calculator = new CalculatorFake();
   });
 
   describe('input validation', () => {
@@ -157,7 +157,7 @@ describe('Investment calculator', () => {
     });
   });
 
-  function Calculator() {
+  function CalculatorFake() {
     // Copy all data properties from the Vue options
     for (let dataPropertyName in calculatorModule.options.data) {
       this[dataPropertyName] = calculatorModule.options.data[dataPropertyName];
