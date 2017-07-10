@@ -2,12 +2,14 @@
   <head>
     <title>Investment Calculator</title>
     <script src="https://unpkg.com/vue"></script>
+    <link href="src/main.css" rel="stylesheet"></link
   </head>
   <body>
     <section id="calculator">
       <header>
         <h1>RRSP vs. TFSA Calculatron</h2>
-        This tool will help you to determine the rates of return on TFSA and RRSP investments after considering tax rates and inflation. All input fields are <strong>required</strong>.
+        <p>This tool will help you to determine the rates of return on TFSA and RRSP investments after considering tax rates and inflation.</p>
+        <p>All input fields are <strong>required</strong>.</p>
       </header>
       <form onsubmit="return false;">
         <fieldset>
@@ -47,30 +49,47 @@
 
       <article v-if="displayResults">
         <h3>Your results:</h3>
-        <article>
-          <output>Future value: ${{nominalFutureValue.toFixed(2)}}</output>
-        </article>
-        <article>
-          <output>Future value adjusted for inflation: ${{inflationFutureValue.toFixed(2)}}</output>
-        </article>
-        <article>
-          <h4>RRSP</h4>
-          <ul>
-            <li>Tax refund: ${{rrspTaxRefund.toFixed(2)}}</li>
-            <li>Tax due on withdrawal: ${{rrspWithdrawalTaxValue.toFixed(2)}}</li>
-            <li>Future value after tax on withdrawal: ${{rrspFutureValueAfterTax.toFixed(2)}}</li>
-            <li>Future value after tax on withdrawal (when investment tax refund is also invested): ${{rrspWithTaxRefundFutureValueAfterTax.toFixed(2)}}</li>
-          </ul>
-        </article>
-        <article>
-          <h4>TFSA</h4>
-          <ul>
-            <li>Tax refund: ${{tfsaTaxRefund.toFixed(2)}}</li>
-            <li>Tax due on withdrawal: ${{tfsaWithdrawalTaxValue.toFixed(2)}}</li>
-            <li>Future value after tax on withdrawal: ${{tfsaFutureValueAfterTax.toFixed(2)}}</li>
-            <li>Future value after tax on withdrawal (when investment tax refund is also invested): ${{tfsaWithTaxRefundFutureValueAfterTax.toFixed(2)}}</li>
-          </ul>
-        </article>
+        <table>
+          <thead>
+            <tr>
+              <th><!-- Intentionally empty header cell --></th>
+              <th>RRSP</th>
+              <th>TFSA</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Future value:</td>
+              <td>${{nominalFutureValue.toFixed(2)}}</td>
+              <td>${{nominalFutureValue.toFixed(2)}}</td>
+            </tr>
+            <tr>
+              <td>Future value adjusted for inflation:</td>
+              <td>${{inflationFutureValue.toFixed(2)}}</td>
+              <td>${{inflationFutureValue.toFixed(2)}}</td>
+            </tr>
+            <tr>
+              <td>Tax refund:</td>
+              <td>${{rrspTaxRefund.toFixed(2)}}</td>
+              <td>${{tfsaTaxRefund.toFixed(2)}}</td>
+            </tr>
+            <tr>
+              <td>Tax due on withdrawal:</td>
+              <td>${{rrspWithdrawalTaxValue.toFixed(2)}}</td>
+              <td>${{tfsaWithdrawalTaxValue.toFixed(2)}}</td>
+            </tr>
+            <tr>
+              <td>Future value after tax on withdrawal:</td>
+              <td>${{rrspFutureValueAfterTax.toFixed(2)}}</td>
+              <td>${{tfsaFutureValueAfterTax.toFixed(2)}}</td>
+            </tr>
+            <tr>
+              <td>Future value after tax on withdrawal when tax refund is also invested:</td>
+              <td>${{rrspWithTaxRefundFutureValueAfterTax.toFixed(2)}}</td>
+              <td>${{tfsaWithTaxRefundFutureValueAfterTax.toFixed(2)}}</td>
+            </tr>
+          </tbody>
+        </table>
       </article>
     </section>
   </body>

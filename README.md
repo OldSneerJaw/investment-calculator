@@ -1,6 +1,6 @@
 # Introduction
 
-A solution to the WealthBar coding test by [Joel Andrews](https://github.com/OldSneerJaw). Built with HTML, JavaScript (ES6/ES2015) and [Vue.js](https://vuejs.org/).
+A solution to the WealthBar coding test by [Joel Andrews](https://github.com/OldSneerJaw). Built with HTML, CSS, JavaScript (ES6/ES2015) and [Vue.js](https://vuejs.org/).
 
 See `WealthBar-Coding-Test.md` for the problem description.
 
