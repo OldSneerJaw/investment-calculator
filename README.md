@@ -1,15 +1,18 @@
 # Introduction
 
-A solution to the WealthBar coding test by Joel Andrews. Built with HTML, JavaScript and Vue.js.
+A solution to the WealthBar coding test by [Joel Andrews](https://github.com/OldSneerJaw). Built with HTML, JavaScript (ES6/ES2015) and [Vue.js](https://vuejs.org/).
+
+See `WealthBar-Coding-Test.md` for the problem description.
 
 # Instructions
 
-The solution was designed to be dirt simple to launch and run. All you need is [Node.js](https://nodejs.org/en/download/) and a modern web browser (tested in Firefox and Chrome).
+The solution was intentionally designed to be dirt simple to run: simply launch `index.html` in a modern web browser (tested in Firefox and Chrome). No dependencies or external tools required.
 
-- To install dependencies: `npm install`
-- To use the app, simply launch `index.html` in a web browser
-- To run the tests: `npm test`
-- To lint the project with JSHint: `npm run jshint`
+To execute the test suite and lint the code, you will need to install a version of [Node.js](https://nodejs.org/en/download/) that supports ECMAScript 2015. Then execute the following steps:
+
+1. Install dependencies: `npm install`
+2. Run the tests: `npm test`
+3. Lint the project with JSHint: `npm run jshint`
 
 # Notes
 
