@@ -127,8 +127,10 @@ let options = {
 
 if (typeof(Vue) === 'function') {
   // Instantiate the global Vue component
-  new Vue(options);
-} else if (typeof(exports) !== 'undefined') {
+  var calculator = new Vue(options);
+}
+
+if (typeof(exports) !== 'undefined') {
   // Export the options as an npm module so they can be exercised independently in unit tests
   exports.options = options;
 }

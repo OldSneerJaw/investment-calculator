@@ -1,0 +1,7 @@
+{
+  "extends": "../.jshintrc",
+  "globals": {
+    "exports": false,
+    "Vue": false
+  }
+}

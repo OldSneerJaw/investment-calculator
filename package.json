@@ -4,10 +4,12 @@
   "dependencies": {},
   "devDependencies": {
     "chai": "^4.0.2",
+    "jshint": "^2.9.5",
     "mocha": "^3.4.2",
     "vue": "^2.3.4"
   },
   "scripts": {
+    "jshint": "node_modules/.bin/jshint src; node_modules/.bin/jshint test",
     "test": "node_modules/.bin/mocha"
   },
   "license": "MIT"
