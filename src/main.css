@@ -7,6 +7,10 @@ table {
   border: 1px solid;
 }
 
+fieldset {
+  width: 450px;
+}
+
 fieldset article {
   display: flex;
   padding-bottom: 6px;
@@ -14,8 +18,8 @@ fieldset article {
 
 fieldset article label {
   flex: auto;
-  max-width: 250px;
-  min-width: 250px;
+  max-width: 275px;
+  min-width: 275px;
   text-align: right;
   padding-right: 6px;
 }

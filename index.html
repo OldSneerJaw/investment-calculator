@@ -49,6 +49,14 @@
 
       <article v-if="displayResults">
         <h3>Your results:</h3>
+        <ul class="result-list">
+          <li>
+            Future value: ${{nominalFutureValue.toFixed(2)}}
+          </li>
+          <li>
+            Future value adjusted for inflation: ${{inflationFutureValue.toFixed(2)}}
+          </li>
+        </ul>
         <table>
           <thead>
             <tr>
@@ -58,16 +66,6 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Future value:</td>
-              <td>${{nominalFutureValue.toFixed(2)}}</td>
-              <td>${{nominalFutureValue.toFixed(2)}}</td>
-            </tr>
-            <tr>
-              <td>Future value adjusted for inflation:</td>
-              <td>${{inflationFutureValue.toFixed(2)}}</td>
-              <td>${{inflationFutureValue.toFixed(2)}}</td>
-            </tr>
             <tr>
               <td>Tax refund:</td>
               <td>${{rrspTaxRefund.toFixed(2)}}</td>
