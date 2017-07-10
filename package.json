@@ -11,5 +11,9 @@
     "jshint": "node_modules/.bin/jshint src",
     "test": "node_modules/.bin/mocha \"src/*-spec.js\""
   },
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OldSneerJaw/investment-calculator"
+  }
 }
